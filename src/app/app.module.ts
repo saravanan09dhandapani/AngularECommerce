@@ -9,7 +9,13 @@ import { VegetablesComponent } from './DashBoardComponents/Vegetables/vegetables
 import { MobilesComponent } from './DashBoardComponents/Mobiles/mobiles/mobiles.component';
 import { CarousalComponent } from './DashBoardComponents/Carousal/carousal/carousal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { LoginComponent } from './Auth/login/login.component';
+import { AllproductsComponent } from './DashBoardComponents/allproducts/allproducts.component';
+import { RegisterComponent } from './Auth/login/register/register.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import{AngularFireModule} from '@angular/fire/compat';
+import{AngularFireAuthModule} from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -19,12 +25,27 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
    ElectronicsComponent,
    VegetablesComponent,
    MobilesComponent,
-   CarousalComponent
+   CarousalComponent,
+   AllproductsComponent,
+   LoginComponent,
+   RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyBiNk9vOU23xixbrfM_6oERQ8Xwex66_pY",
+      authDomain: "angularsampleproject-22ccb.firebaseapp.com",
+      projectId: "angularsampleproject-22ccb",
+      storageBucket: "angularsampleproject-22ccb.appspot.com",
+      messagingSenderId: "735081205224",
+      appId: "1:735081205224:web:8a57694318595f3bf2285d",
+      measurementId: "G-K9NTPF4D5Z"
+    }),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
