@@ -14,8 +14,16 @@ import { AllproductsComponent } from './DashBoardComponents/allproducts/allprodu
 import { RegisterComponent } from './Auth/login/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import{AngularFireModule} from '@angular/fire/compat';
-import{AngularFireAuthModule} from '@angular/fire/compat/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
+import { AuthService } from "./shared/services/auth.service";
+import { ForgetPasswordComponent } from './Auth/login/forget-password/forget-password.component';
+
+
 
 @NgModule({
   declarations: [
@@ -28,7 +36,8 @@ import{AngularFireAuthModule} from '@angular/fire/compat/auth';
    CarousalComponent,
    AllproductsComponent,
    LoginComponent,
-   RegisterComponent
+   RegisterComponent,
+   ForgetPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,18 +45,13 @@ import{AngularFireAuthModule} from '@angular/fire/compat/auth';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp({
-      apiKey: "AIzaSyBiNk9vOU23xixbrfM_6oERQ8Xwex66_pY",
-      authDomain: "angularsampleproject-22ccb.firebaseapp.com",
-      projectId: "angularsampleproject-22ccb",
-      storageBucket: "angularsampleproject-22ccb.appspot.com",
-      messagingSenderId: "735081205224",
-      appId: "1:735081205224:web:8a57694318595f3bf2285d",
-      measurementId: "G-K9NTPF4D5Z"
-    }),
-    AngularFireAuthModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

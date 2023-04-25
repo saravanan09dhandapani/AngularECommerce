@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailValidator, FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
+import { AuthService } from "../../shared/services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -7,6 +8,9 @@ import { EmailValidator, FormControl, FormGroup, RequiredValidator, Validators }
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent  {
+  constructor(
+    public authService: AuthService
+  ) { }
 login = new FormGroup({
   name:new FormControl("",Validators.required),
   Email: new FormControl("",[Validators.required,Validators.email]),
@@ -16,9 +20,9 @@ GetData(){
   console.log(this.login.value)
 }
 
-get vname(){
-  return this.login.get("name");
-}
+// get vname(){
+//   return this.login.get("name");
+// }
 get vEmail(){
   return this.login.get("Email");
 }

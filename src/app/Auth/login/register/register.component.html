@@ -1,40 +1,56 @@
 <div class="container">
-    <br>
-    <form [formGroup]="register">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <form [formGroup]="register">
         <div class="row">
-            <div class="row col-sm-5">
-                <div class="form-group">
-                    <label for="Name" style="font-weight: 500;">Name</label>
-                    <input type="text" id="Name" name="Name" class="form-control" formControlName="name" autocomplete="off">
-                    <span *ngIf="vname && vname.invalid && vname.touched" style="color: red;">Enter valid name</span>
+          <div class="row col-sm-10">
+            <div class="form-group">
+              <label for="Name" style="font-weight: 500;">Name</label>
+              <input type="text" id="Name" name="Name" class="form-control" formControlName="name" autocomplete="off">
+              <span *ngIf="vname && vname.invalid && vname.touched" style="color: red;">Enter valid name</span>
 
-                </div>
-                <div class="form-group">
-                    <label for="Email" style="font-weight: 500;">Email</label>
-                    <input type="text" id="Email" name="Email" class="form-control" formControlName="Email" autocomplete="off">
-                    <span *ngIf="vEmail && vEmail.invalid && vEmail.touched" style="color: red;">Enter valid Email</span>
-                </div>
-                <div class="form-group">
-                    <label for="Number" style="font-weight: 500;">PhoneNumber</label>
-                    <input type="text" id="Number" name="Number" class="form-control" formControlName="PhoneNumber" autocomplete="off">
-                    <span *ngIf="vPhoneNumber && vPhoneNumber.invalid && vPhoneNumber.touched" style="color: red;">Enter valid PhoneNumber</span>
-                </div>
-                <div class="form-group">
-                    <label for="Password" style="font-weight: 500;">Password</label>
-                    <input type="text" id="Password" name="Password" class="form-control" formControlName="Password" autocomplete="off">
-                    <span *ngIf="vPassword && vPassword.invalid && vPassword.touched" style="color: red;">Enter valid Password</span>
-                </div>
-                <div class="form-group">
-                    <label for="Password" style="font-weight: 500;">Conform Password</label>
-                    <input type="text" id="Password" name="Password" class="form-control" formControlName="ConformPassword" autocomplete="off">
-                    <span *ngIf="vConformPassword && vConformPassword.invalid && vConformPassword.touched" style="color: red;">Enter valid ConformPassword</span>
-                </div>
             </div>
+            <div class="form-group">
+              <label for="Email" style="font-weight: 500;">Email</label>
+              <input type="text" id="Email" name="Email" #userEmail required class="form-control"
+                formControlName="Email" autocomplete="off">
+              <span *ngIf="vEmail && vEmail.invalid && vEmail.touched" style="color: red;">Enter valid Email</span>
+            </div>
+            <div class="form-group">
+              <label for="Number" style="font-weight: 500;">PhoneNumber</label>
+              <input type="text" id="Number" name="Number" class="form-control" formControlName="PhoneNumber"
+                autocomplete="off">
+              <span *ngIf="vPhoneNumber && vPhoneNumber.invalid && vPhoneNumber.touched" style="color: red;">Enter valid
+                PhoneNumber</span>
+            </div>
+            <div class="form-group">
+              <label for="Password" style="font-weight: 500;">Password</label>
+              <input type="text" id="Password" #userPwd required name="Password" class="form-control"
+                formControlName="Password" autocomplete="off">
+              <span *ngIf="vPassword && vPassword.invalid && vPassword.touched" style="color: red;">Enter valid
+                Password</span>
+            </div>
+            <div class="form-group">
+              <label for="Password" style="font-weight: 500;">Confirm Password</label>
+              <input type="text" id="Password" name="Password" class="form-control" formControlName="ConformPassword"
+                autocomplete="off">
+              <span *ngIf="vConformPassword && vConformPassword.invalid && vConformPassword.touched"
+                style="color: red;">Enter valid ConfirmPassword</span>
+            </div>
+          </div>
         </div>
         <br>
-        <div class="form-group">
-            <button>Continue</button>
+        <div class="form-group" style="justify-content: center;">
+          <button [disabled]="!register.valid" (click)="authService.SignUp(userEmail.value, userPwd.value)" routerLink="/login">Continue</button>
         </div>
-   
-    </form>
+        <div style="padding-top: 10px;color: rgb(43, 191, 249);font-size: small;" >
+          <span>Already have an account?
+            <span class="redirect" routerLink="/login">Log In</span></span>
+        </div>
+        
+      </form>
+    </div>
+    <div class="col-3"></div>
+  </div>
 </div>

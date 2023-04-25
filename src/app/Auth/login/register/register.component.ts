@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailValidator, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/shared/services/auth.service';
+
 
 @Component({
   selector: 'app-register',
@@ -7,6 +9,9 @@ import { EmailValidator, FormControl, FormGroup, Validators } from '@angular/for
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  constructor(
+    public authService: AuthService
+  ) { }
   register = new FormGroup({
     name: new FormControl("", Validators.required),
     Email: new FormControl("",[Validators.required,Validators.email]),
